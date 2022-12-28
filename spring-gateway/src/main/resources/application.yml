@@ -1,0 +1,24 @@
+server:
+   port: 8090
+   
+
+   
+spring:
+  application:
+    name: spring-gateway  
+  cloud :
+    gateway:
+      routes:
+       -  id: empl-service
+          uri:
+           lb:http://localhost:8081/
+          predicates:
+          - Path=/emp/**
+         
+       -  id: address-service
+          uri:
+            lb:http://localhost:8082/
+          predicates: 
+          - Path=/address/**
+      
+   
